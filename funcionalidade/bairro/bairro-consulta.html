@@ -1,0 +1,80 @@
+<section ng-controller="bairroController">
+    <div class="jumbotron">
+      <br>
+      <h5>Bairros</h5>
+      <input class="form-control" type="text" ng-model="buscaBairro" ng-model-options="{updateOn: 'default blur', debounce:{default: 150, blur:0}}" placeholder="Qual bairro está buscando?"/>
+      <table id="tabBairros" class="table table-dark table-hover">
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Valor do IPTU</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="bairro in bairros | filter:buscaBairro">
+          <td>{{bairro.id}}</td>
+          <td>{{bairro.nome}}</td>
+          <td>R${{bairro.valorDoIptu}}</td>
+          <td><button type="button" class="btn btn-secondary" ng-click="setBairroSelecionado(bairro)" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button></td>
+          <td ><button type="button" class="btn btn-danger" ng-click="setBairroSelecionado(bairro)" data-bs-toggle="modal" data-bs-target="#deleteModal" ng-model="bairro">Apagar</button> </td>
+        </tr>
+      </table>
+      <button type="button" class="btn btn-light" ng-click="paginaAnterior()">Anterior</button>
+      <button type="button" class="btn btn-light" ng-click="proximaPagina()">Próximo</button>
+
+      <!-- Delete Modal -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteModalLabel">Delete Bairro</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Tem certeza que deseja apagar este bairro?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" ng-click="deleteBairro(getBairroSelecionado())">Continuar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Edit Modal -->
+      <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editarModalLabel">Editar Bairro</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form name="bairroForm">
+                <input type="text" class="form-control" placeholder="Nome do Bairro" ng-model="getBairroSelecionado().nome" name="nome" placeholder="Nome do Bairro" ng-required="true" ng-minlength="4">
+                <br>
+                <input class="form-control" type="text" ng-model="getBairroSelecionado().valorDoIptu" name="valorDoIptu" placeholder="Valor do IPTU" ng-required="true"/>
+            </form>
+            <br>
+              <div ng-show="bairroForm.nome.$error.required && bairroForm.nome.$dirty" class="alert alert-danger">
+                Preencha o nome do bairro!
+              </div>
+              <div ng-show="bairroForm.nome.$error.required && bairroForm.nome.$dirty" class="alert alert-danger" ng-message="minlength">
+                O nome do bairro deve ter ao menos 4 caracteres.
+              </div>
+              <div ng-show="bairroForm.valorDoIptu.$error.required && bairroForm.valorDoIptu.$dirty" class="alert alert-danger">
+                Preencha o campo valor do IPTU!
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success" id="btnEditar" data-bs-dismiss="modal" ng-click="editarBairro(getBairroSelecionado())">Concluir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>

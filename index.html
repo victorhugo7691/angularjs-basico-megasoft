@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="PT-BR" ng-app="meuApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Controle</title> 
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"/> 
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="funcionalidade/app.js"></script>
+    <script src="funcionalidade/profissao/profissao.controller.js"></script>
+    <script src="funcionalidade/profissao/profissao.service.js"></script>
+    <script src="funcionalidade/profissao/profissao.router.js"></script>
+    <script src="funcionalidade/bairro/bairro.controller.js"></script>
+    <script src="funcionalidade/bairro/bairro.service.js"></script>
+    <script src="funcionalidade/bairro/bairro.route.js"></script>
+    <script src="funcionalidade/baseUrl.js"></script>
+
+</head>
+
+<body background="lib/Imagens/background.jpeg">
+  {{app}}
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4">
+          <a class="btn btn-light" href="#/novaProfissao">Profissão</a>
+          <a class="btn btn-light" href="#/novoBairro">Bairro</a>
+        </div>
+      </div>
+      
+       <nav class="navbar navbar-dark bg-dark"> 
+        <div class="container-fluid">
+          <div id="titulo">Sistema de Controle Pessoal</div>
+            <div class="btn-group" role="group">
+              <img src="lib/Imagens/cadastrese.png" width="50%" id="btnGroupDrop1" type="button"  data-bs-toggle="dropdown" aria-expanded="false">
+              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+               <!-- <li><a class="dropdown-item" href="/novaProfissao">Profissão</a></li> -->
+                <li><a class="dropdown-item" href="/novoBairro">Bairro</a></li>
+              </ul>
+            </div>
+          </div>
+      </nav>
+      
+      <section class="secaoDeConsultas">
+        <div class="fs-2">Consultar</div>
+        <table class="secaoDeConsultas">
+          <tr>
+            <td><a class="btn btn-primary btn-block" href="/bairros">Bairros</a></td>
+            <td><a class="btn btn-primary btn-block" href="/profissoes">Profissões</a></td>
+          </tr>
+        </table>
+      </section>
+
+      <div ng-view></div>
+
+      <div id="msgSucesso" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="alertaSucessoModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-success text-center">
+              <h5 class="modal-title" id="visulUsuarioModalLabel">Sucesso</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Atividade realizada com sucesso!
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="msgErro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="alertaErroModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-danger text-center">
+              <h5 class="modal-title" id="visulUsuarioModalLabel">Erro</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Falha ao realizar a atividade!
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

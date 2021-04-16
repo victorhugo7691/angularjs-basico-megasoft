@@ -1,0 +1,26 @@
+<div class="jumbotron" ng-controller="bairroController">
+<h5>____________________________________________________________________________________________________</h5>
+    <form name="bairroForm">
+      <br>
+      <h3>Cadastro</h3>
+      <br>
+      <input class="form-control" type="text" ng-model="bairro.nome" name="nome" placeholder="Nome do Bairro" ng-required="true" ng-minlength="4"/>
+      <br>
+      <input class="form-control" type="text" ng-model="bairro.valorDoIptu" name="valorDoIptu" placeholder="Valor do IPTU" ng-required="true"/>
+      <br>
+      <br>
+    </form>
+
+    <div ng-show="bairroForm.nome.$error.required && bairroForm.nome.$dirty" class="alert alert-danger">
+      Preencha o nome do bairro!
+    </div>
+    <div ng-show="bairroForm.nome.$error.required && bairroForm.nome.$dirty" class="alert alert-danger" ng-message="minlength">
+      O nome do bairro deve ter ao menos 4 caracteres.
+    </div>
+    <div ng-show="bairroForm.valorDoIptu.$error.required && bairroForm.valorDoIptu.$dirty" class="alert alert-danger">
+      Preencha o campo valor do IPTU!
+    </div>
+
+    <button class="btn btn-primary btn-block" ng-click="adicionarBairro(bairro)">Adicionar Bairro</button>
+    
+</div>
