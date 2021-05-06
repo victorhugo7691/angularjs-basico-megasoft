@@ -1,0 +1,29 @@
+<div class="jumbotron" ng-controller="enderecoController">
+
+    <form name="enderecoForm">
+      <br>
+      <h3>Cadastro de Endereço</h3>
+      <br>
+      <input class="form-control" type="text" ng-model="endereco.rua" name="rua" placeholder="Rua" ng-required="true" ng-minlength="4" required/>
+      <br>
+      <input class="form-control" type="text" ng-model="endereco.numero" name="numeroDaCasa" placeholder="Número da casa" ng-required="true"/>
+      <br>
+      <input class="form-control" type="text" ng-model="endereco.cep" name="cep" placeholder="CEP" ng-required="true"/>
+      <br>
+      <input class="form-control" type="text" ng-model="endereco.bairro.nome" name="nomeBairro" placeholder="Nome do Bairro" ng-required="true"/>
+      <br>
+      <input class="form-control" type="text" ng-model="endereco.bairro.valorDoIptu" name="iptu" placeholder="Valor do IPTU" ng-required="true"/>
+      <br>
+    </form>
+
+    <div ng-show="bairroForm.nome.$error.required && bairroForm.nome.$dirty" class="alert alert-danger">
+      Preencha o nome do bairro!
+    </div>
+    <div ng-show="bairroForm.nome.$error.required && bairroForm.nome.$dirty" class="alert alert-danger" ng-message="minlength">
+      O nome do bairro deve ter ao menos 4 caracteres.
+    </div>
+    <div ng-show="bairroForm.valorDoIptu.$error.required && bairroForm.valorDoIptu.$dirty" class="alert alert-danger">
+      Preencha o campo valor do IPTU!
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" ng-click="adicionarEndereco(endereco)">Adicionar Endereco</button>
+</div>

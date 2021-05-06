@@ -1,47 +1,35 @@
-angular.module("meuApp").controller("pessoaController", function($scope, $http, pessoaService){
+angular.module("meuApp").controller("pessoaController", function($scope, pessoaService, $location){
     $scope.app="Pessoa"
     $scope.pessoas=[];
+    var paginaAtual=1;
+    var maximoDePaginas=5;
+    var numeroDaPagina = 1;
 
-    var listarPessoas= function(){
-        pessoaService.getPessoas().then(function(data){
-            $scope.pessoas= data;
-        }).error(function(data, status){
-            $scope.message="Não foi possível listar as pessoas "+data;
+    var listarPessoas = function(numeroDaPagina){
+        pessoaService.getPessoas(numeroDaPagina).then(function(response){
+            $scope.pessoas= response.data;
         });
     };
 
-    var listarPessoaPorNome= function(nome){
-        pessoaService.getPessoaPorNome().then(function(data){
-            $scope.pessoas= data;
-        }).error(function(data, status){
-            $scope.message="Não foi possível consultar a pessoa "+data;
-        });
+    $scope.imprimirPessoas = function(){
+        pessoaService.getPdf();
+    };
+    
+    $scope.paginaAnterior = function(){
+        if(paginaAtual==1)
+            paginaAtual=1;
+        else
+            paginaAtual=paginaAtual-1;
+            listarPessoas(paginaAtual);
     };
 
-    var listarPessoaDto= function(){
-        pessoaService.getPessoaDto().then(function(data){
-            $scope.pessoas= data;
-        }).error(function(data, status){
-            $scope.message="Não foi possível listar as pessoas "+data;
-        });
+    $scope.proximaPagina = function(){
+        if(paginaAtual==maximoDePaginas)
+            paginaAtual=maximoDePaginas;
+        else
+            paginaAtual=paginaAtual+1;
+            listarPessoas(paginaAtual);
     };
 
-    var listarPessoasPorBairro= function(bairro){
-        pessoaService.getPessoaPorBairro().then(function(data){
-            $scope.pessoas= data;
-        }).error(function(data, status){
-            $scope.message="Não foi possível listar as pessoas por bairro "+data;
-        });
-    };
-
-    var adicionarPessoa= function(pessoaEntrada){ //function(nome, idade...)
-        $scope.pessoas.push(pessoaEntrada);//(nome,idade...) no html ng-click="adicionarPeddoa(nome, idade...)"
-        delete $scope.pessoaEntrada;//Remove a informação da tela
-    }
-
-    listarPessoas();
-    listarPessoaPorNome();
-    listarPessoaDto();
-    listarPessoasPorBairro();
-    adicionarPessoa(pessoaEntrada);
+    listarPessoas(numeroDaPagina);
 });

@@ -18,11 +18,16 @@
     <script src="funcionalidade/bairro/bairro.controller.js"></script>
     <script src="funcionalidade/bairro/bairro.service.js"></script>
     <script src="funcionalidade/bairro/bairro.route.js"></script>
+    <script src="funcionalidade/endereco/endereco.controller.js"></script>
+    <script src="funcionalidade/endereco/endereco.service.js"></script>
+    <script src="funcionalidade/endereco/endereco.route.js"></script>
+    <script src="funcionalidade/pessoa/pessoa.controller.js"></script>
+    <script src="funcionalidade/pessoa/pessoa.service.js"></script>
+    <script src="funcionalidade/pessoa/pessoa.route.js"></script>
     <script src="funcionalidade/baseUrl.js"></script>
-
 </head>
 
-<body background="lib/Imagens/background.jpeg">
+<body background="lib/Imagens/background.jpg">
   {{app}}
     <div class="collapse" id="navbarToggleExternalContent">
       <div class="bg-dark p-4">
@@ -38,7 +43,8 @@
               <img src="lib/Imagens/cadastrese.png" width="50%" id="btnGroupDrop1" type="button"  data-bs-toggle="dropdown" aria-expanded="false">
               <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                <!-- <li><a class="dropdown-item" href="/novaProfissao">Profissão</a></li> -->
-                <li><a class="dropdown-item" href="/novoBairro">Bairro</a></li>
+               <li><a class="dropdown-item" href="/novoEndereco">Endereço</a></li> 
+               <li><a class="dropdown-item" href="/novoBairro">Bairro</a></li>
               </ul>
             </div>
           </div>
@@ -48,8 +54,10 @@
         <div class="fs-2">Consultar</div>
         <table class="secaoDeConsultas">
           <tr>
-            <td><a class="btn btn-primary btn-block" href="/bairros">Bairros</a></td>
-            <td><a class="btn btn-primary btn-block" href="/profissoes">Profissões</a></td>
+            <td><a class="btn btn-block" href="/pessoas"><img src="lib/Imagens/iconePessoa.png" width="50px"><br>Pessoas</a></td>
+            <td><a class="btn btn-block" href="/bairros"><img src="lib/Imagens/iconeMapa.png" width="50px"><br>Bairros</a></td>
+            <td><a class="btn btn-block" href="/profissoes"><img src="lib/Imagens/iconeProfissao.png" width="50px"><br>Profissões</a></td>
+            <td><a class="btn btn-block" href="/enderecos"><img src="lib/Imagens/iconeEndereco.png" width="50px"><br>Endereços</a></td>
           </tr>
         </table>
       </section>

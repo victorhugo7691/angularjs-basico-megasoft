@@ -1,26 +1,33 @@
-<section ng-controller="bairroController">
+<section ng-controller="pessoaController">
     <div class="jumbotron">
       <br>
-      <h5>Bairros</h5>
-      <input class="form-control" type="text" ng-model="buscaBairro" ng-model-options="{updateOn: 'default blur', debounce:{default: 150, blur:0}}" placeholder="Qual bairro está buscando?"/>
-      <table id="tabBairros" class="table table-dark table-hover">
+      <h5>Enderecos</h5>
+      <input class="form-control" type="text" ng-model="buscaPessoa" ng-model-options="{updateOn: 'default blur', debounce:{default: 150, blur:0}}" placeholder="Nome da pessoa está buscando?"/>
+      <table id="tabPessoas" class="table table-dark table-hover">
         <tr>
-          <th>ID</th>
           <th>Nome</th>
-          <th>Valor do IPTU</th>
+          <th>Sobrenome</th>
+          <th>Endereço</th>
+          <th>Idade</th>
+          <th>Peso</th>
+          <th>Profissao</th>
           <th></th>
           <th></th>
         </tr>
-        <tr ng-repeat="bairro in bairros | filter:buscaBairro">
-          <td>{{bairro.id}}</td>
-          <td>{{bairro.nome}}</td>
-          <td>R${{bairro.valorDoIptu}}</td>
-          <td><button type="button" class="btn btn-secondary" ng-click="setBairroSelecionado(bairro)" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button></td>
-          <td ><button type="button" class="btn btn-danger" ng-click="setBairroSelecionado(bairro)" data-bs-toggle="modal" data-bs-target="#deleteModal" ng-model="bairro">Apagar</button> </td>
+        <tr ng-repeat="pessoa in pessoas | filter:buscaPessoa">
+          <td>{{pessoa.nome}}</td>
+          <td>{{pessoa.sobrenome}}</td>
+          <td>{{pessoa.endereco.id}}</td>
+          <td>{{pessoa.idade}}</td>
+          <td>{{pessoa.peso}} kg</td>
+          <td>{{pessoa.profissao.nome}}</td>
+          <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button></td>
+          <td ><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal" ng-model="bairro">Apagar</button> </td>
         </tr>
       </table>
       <button type="button" class="btn btn-outline-primary" ng-click="paginaAnterior()">Anterior</button>
       <button type="button" class="btn btn-outline-primary" ng-click="proximaPagina()">Próximo</button>
+      <button type="button" class="btn" ng-click="imprimirPessoas()"><img src="lib/Imagens/print.png" width="40px"></button>
 
       <!-- Delete Modal -->
       <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
