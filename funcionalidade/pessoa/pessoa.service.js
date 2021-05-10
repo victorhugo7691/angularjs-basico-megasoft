@@ -8,4 +8,8 @@ angular.module("meuApp").service("pessoaService", function($http, config){
         window.open(config.baseUrl+"/pessoa/imprimir");
     };
 
+    this.deletePessoa = function(pessoa){
+        return $http.delete(config.baseUrl+"/pessoa/"+pessoa.cpf, pessoa);
+    };
+
 });

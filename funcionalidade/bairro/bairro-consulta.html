@@ -8,15 +8,15 @@
           <th>ID</th>
           <th>Nome</th>
           <th>Valor do IPTU</th>
-          <th></th>
-          <th></th>
+          <th>Editar</th>
+          <th>Apagar</th>
         </tr>
         <tr ng-repeat="bairro in bairros | filter:buscaBairro">
           <td>{{bairro.id}}</td>
           <td>{{bairro.nome}}</td>
           <td>R${{bairro.valorDoIptu}}</td>
-          <td><button type="button" class="btn btn-secondary" ng-click="setBairroSelecionado(bairro)" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button></td>
-          <td ><button type="button" class="btn btn-danger" ng-click="setBairroSelecionado(bairro)" data-bs-toggle="modal" data-bs-target="#deleteModal" ng-model="bairro">Apagar</button> </td>
+          <td><button type="button" class="btn" ng-click="setBairroSelecionado(bairro)" data-bs-toggle="modal" data-bs-target="#editarModal"><img src="lib/Imagens/edit.png" width="30px"></button></td>
+          <td ><button type="button" class="btn" ng-click="setBairroSelecionado(bairro)" data-bs-toggle="modal" data-bs-target="#deleteModal" ng-model="bairro"><img src="lib/Imagens/lixeira.ico" width="30px"></button> </td>
         </tr>
       </table>
       <button type="button" class="btn btn-outline-primary" ng-click="paginaAnterior()">Anterior</button>

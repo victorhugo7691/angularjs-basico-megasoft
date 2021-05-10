@@ -11,8 +11,7 @@
           <th>Idade</th>
           <th>Peso</th>
           <th>Profissao</th>
-          <th></th>
-          <th></th>
+          <th>Apagar</th>
         </tr>
         <tr ng-repeat="pessoa in pessoas | filter:buscaPessoa">
           <td>{{pessoa.nome}}</td>
@@ -21,8 +20,7 @@
           <td>{{pessoa.idade}}</td>
           <td>{{pessoa.peso}} kg</td>
           <td>{{pessoa.profissao.nome}}</td>
-          <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button></td>
-          <td ><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal" ng-model="bairro">Apagar</button> </td>
+          <td ><button type="button" class="btn" ng-click="setPessoaSelecionada(pessoa)" data-bs-toggle="modal" data-bs-target="#deleteModal" ng-model="pessoa"><img src="lib/Imagens/lixeira.ico" width="30px"></button> </td>
         </tr>
       </table>
       <button type="button" class="btn btn-outline-primary" ng-click="paginaAnterior()">Anterior</button>
@@ -34,48 +32,15 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="deleteModalLabel">Delete Bairro</h5>
+              <h5 class="modal-title" id="deleteModalLabel">Delete pessoa</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              Tem certeza que deseja apagar este bairro?
+              Tem certeza que deseja apagar essa pessoa?
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" ng-click="deleteBairro(getBairroSelecionado())">Continuar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Edit Modal -->
-      <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="editarModalLabel">Editar Bairro</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form name="bairroForm">
-                <input type="text" class="form-control" placeholder="Nome do Bairro" ng-model="getBairroSelecionado().nome" name="nome" placeholder="Nome do Bairro" ng-required="true" ng-minlength="4">
-                <br>
-                <input class="form-control" type="text" ng-model="getBairroSelecionado().valorDoIptu" name="valorDoIptu" placeholder="Valor do IPTU" ng-required="true"/>
-            </form>
-            <br>
-              <div ng-show="bairroForm.nome.$error.required && bairroForm.nome.$dirty" class="alert alert-danger">
-                Preencha o nome do bairro!
-              </div>
-              <div ng-show="bairroForm.nome.$error.required && bairroForm.nome.$dirty" class="alert alert-danger" ng-message="minlength">
-                O nome do bairro deve ter ao menos 4 caracteres.
-              </div>
-              <div ng-show="bairroForm.valorDoIptu.$error.required && bairroForm.valorDoIptu.$dirty" class="alert alert-danger">
-                Preencha o campo valor do IPTU!
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-success" id="btnEditar" data-bs-dismiss="modal" ng-click="editarBairro(getBairroSelecionado())">Concluir</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" ng-click="deletePessoa(getPessoaSelecionada())">Continuar</button>
             </div>
           </div>
         </div>
