@@ -16,14 +16,8 @@
       <br>
     </form>
 
-    <div ng-show="bairroForm.nome.$error.required && bairroForm.nome.$dirty" class="alert alert-danger">
-      Preencha o nome do bairro!
-    </div>
-    <div ng-show="bairroForm.nome.$error.required && bairroForm.nome.$dirty" class="alert alert-danger" ng-message="minlength">
-      O nome do bairro deve ter ao menos 4 caracteres.
-    </div>
-    <div ng-show="bairroForm.valorDoIptu.$error.required && bairroForm.valorDoIptu.$dirty" class="alert alert-danger">
-      Preencha o campo valor do IPTU!
+    <div ng-show="enderecoForm.rua.$error.required && enderecoForm.rua.$dirty" class="alert alert-danger">
+      Preencha os dados corretamente!
     </div>
     <button type="submit" class="btn btn-success btn-block" ng-click="adicionarEndereco(endereco)">Adicionar Endereco</button>
 </div>

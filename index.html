@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sistema de Controle</title> 
+    <link rel="icon" href="lib/Imagens/icon.png"/>
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"/> 
     <link rel="stylesheet" type="text/css" href="index.css"/>
     <script src="lib/bootstrap/js/bootstrap.js"></script>
@@ -68,9 +69,7 @@
           <div class="modal-content">
             <div class="modal-header bg-success text-center">
               <h5 class="modal-title" id="visulUsuarioModalLabel">Sucesso</h5>
-              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              
             </div>
             <div class="modal-body">
               Atividade realizada com sucesso!
@@ -87,12 +86,16 @@
           <div class="modal-content">
             <div class="modal-header bg-danger text-center">
               <h5 class="modal-title" id="visulUsuarioModalLabel">Erro</h5>
-              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <!--<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>
+              </button>-->
             </div>
             <div class="modal-body">
               Falha ao realizar a atividade!
+              <br>
+              <div ng-controller="bairroController" ng-controller="pessoaController">
+                {{erroThrow}}
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Fechar</button>

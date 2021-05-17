@@ -1,10 +1,11 @@
 angular.module("meuApp").controller("bairroController", function($scope, bairroService, $location){
     $scope.app="Bairro"
-    $scope.bairros=[];
-    var numeroDaPagina=1;
-    var paginaAtual=1;
-    var maximoDePaginas=5;
+    $scope.bairros = [];
+    var numeroDaPagina = 1;
+    var paginaAtual = 1;
+    var maximoDePaginas = 5;
     var bairroSelecionado;
+    $scope.erroThrow;
 
     /*var listarBairros= function(){
         bairroService.getBairros().then(function(response){
@@ -23,6 +24,7 @@ angular.module("meuApp").controller("bairroController", function($scope, bairroS
             $scope.bairroForm.$setPristine();
             $location.path("/novoBairro");
             aviso(1);
+            //catch
         }, function errorCallback(response){
             aviso(0);
         });
@@ -42,6 +44,8 @@ angular.module("meuApp").controller("bairroController", function($scope, bairroS
             listarBairros(numeroDaPagina); 
             aviso(1);
         }, function errorCallback(response){
+            $scope.erroThrow= response.data.error;
+            console.log(response.data.error);
             aviso(0);
         });
     };
@@ -83,6 +87,6 @@ angular.module("meuApp").controller("bairroController", function($scope, bairroS
             $('#msgErro').modal('show');
         }
     };
-    
+
     listarBairros(numeroDaPagina);
 });
